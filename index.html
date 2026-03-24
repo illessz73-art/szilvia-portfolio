@@ -178,8 +178,8 @@
 
     .four-col-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
     }
 
     .five-col-grid {
@@ -209,8 +209,8 @@
 
     .square img {
       aspect-ratio: 1 / 1;
-      object-fit: contain;
-      padding: 8px;
+      object-fit: cover;
+      padding: 0;
       background: #f8f9fb;
     }
 
@@ -250,16 +250,19 @@
       font-size: 0.98rem;
     }
 
+    .reference-note {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--soft-line);
+      font-size: 0.92rem;
+      color: var(--muted);
+      max-width: 860px;
+    }
+
     .footer {
       padding: 14px 0 28px;
       color: var(--muted);
       font-size: 0.9rem;
-    }
-
-    .note {
-      margin-top: 12px;
-      font-size: 0.88rem;
-      color: var(--muted);
     }
 
     .lightbox {
@@ -453,14 +456,15 @@
         padding: 2.5mm 3mm 3mm;
       }
 
+      .reference-note {
+        font-size: 8.5pt;
+        margin-top: 4mm;
+        padding-top: 3mm;
+      }
+
       .footer {
         padding: 4mm 0 0;
         font-size: 8.5pt;
-      }
-
-      .note {
-        font-size: 8.5pt;
-        margin-top: 3mm;
       }
 
       .lightbox {
@@ -597,8 +601,8 @@
 
         <div class="five-col-grid">
           <article class="card tall">
-            <img class="zoomable" src="images/Hirlevel-nyito.png" alt="Newsletter opening page" />
-            <div class="caption">Opening page</div>
+            <img class="zoomable" src="images/Hirlevel-5.png" alt="Newsletter excerpt page 5" />
+            <div class="caption">Excerpt</div>
           </article>
 
           <article class="card tall">
@@ -661,9 +665,9 @@
           </ul>
         </div>
 
-        <p class="note">
-          Selected previous work examples presented in web format.
-        </p>
+        <div class="reference-note">
+          The work samples included here are drawn from the most recent and best-documented body of work available for presentation in a consistent format.
+        </div>
       </div>
     </section>
   </main>
