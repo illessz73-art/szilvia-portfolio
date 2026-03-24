@@ -10,17 +10,24 @@
   />
   <style>
     :root {
-      --bg: #f5f5f3;
+      --bg: #f4f3ef;
       --surface: #ffffff;
-      --text: #1f2d3d;
-      --muted: #5c6875;
-      --line: #7d98b3;
-      --shadow: 0 10px 30px rgba(20, 35, 55, 0.10);
-      --radius: 18px;
-      --max: 1140px;
+      --text: #223043;
+      --muted: #667381;
+      --line: #8aa0b7;
+      --soft-line: #d8e0e7;
+      --shadow: 0 8px 22px rgba(20, 35, 55, 0.08);
+      --radius: 16px;
+      --max: 1080px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
@@ -30,12 +37,19 @@
       line-height: 1.55;
     }
 
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
     a {
-      color: #3f6f99;
+      color: #496f96;
       text-decoration: none;
     }
 
-    a:hover { text-decoration: underline; }
+    a:hover {
+      text-decoration: underline;
+    }
 
     .container {
       width: min(100% - 40px, var(--max));
@@ -43,79 +57,78 @@
     }
 
     .hero {
-      padding: 56px 0 28px;
+      padding: 46px 0 18px;
     }
 
     .hero-top {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      gap: 24px;
+      gap: 20px;
       border-bottom: 2px solid var(--line);
-      padding-bottom: 18px;
-      margin-bottom: 22px;
+      padding-bottom: 14px;
     }
 
     .hero h1 {
       margin: 0;
-      font-size: clamp(2rem, 4vw, 3.6rem);
+      font-size: clamp(2rem, 3.8vw, 3.2rem);
       font-weight: 500;
-      line-height: 1.08;
+      line-height: 1.1;
       letter-spacing: -0.02em;
     }
 
     .hero .name {
-      font-size: 1.1rem;
+      font-size: 1.02rem;
       color: var(--muted);
       white-space: nowrap;
-    }
-
-    .intro {
-      max-width: 760px;
-      color: var(--muted);
-      font-size: 1.02rem;
-      margin: 0;
+      padding-bottom: 3px;
     }
 
     section {
-      padding: 26px 0 18px;
+      padding: 20px 0 12px;
     }
 
     .section-title {
-      font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+      font-size: clamp(1.7rem, 2.4vw, 2.4rem);
       font-weight: 500;
-      margin: 0 0 10px;
+      margin: 0 0 8px;
     }
 
     .section-rule {
       height: 2px;
       background: var(--line);
-      margin-bottom: 28px;
+      margin-bottom: 20px;
     }
 
     .section-meta {
-      margin: 0 0 26px;
+      margin: 0 0 18px;
       color: var(--muted);
+      font-size: 0.98rem;
       max-width: 760px;
     }
 
     .link-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 16px 28px;
-      margin-bottom: 24px;
+      gap: 12px 28px;
+      margin-bottom: 18px;
       color: var(--muted);
-      font-size: 1rem;
+      font-size: 0.98rem;
     }
 
     .grid-2,
+    .grid-3,
     .grid-4 {
       display: grid;
-      gap: 28px;
+      gap: 20px;
     }
 
     .grid-2 {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
     .grid-4 {
@@ -124,17 +137,28 @@
 
     .card {
       background: var(--surface);
+      border: 1px solid rgba(160, 176, 190, 0.18);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow: hidden;
     }
 
     .card img {
-      display: block;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      background: #e9edf1;
+      background: #edf1f4;
+    }
+
+    .card.standard img {
+      aspect-ratio: 4 / 3;
+      object-fit: contain;
+      padding: 10px;
+    }
+
+    .card.copy img {
+      aspect-ratio: 4 / 3;
+      object-fit: contain;
+      padding: 10px;
+      background: #f7f8fa;
     }
 
     .card.tall img {
@@ -144,56 +168,77 @@
       background: #f8f9fb;
     }
 
-    .card.wide img {
-      aspect-ratio: 4 / 3;
+    .card.gridshot img {
+      aspect-ratio: 16 / 8.5;
+      object-fit: contain;
+      padding: 8px;
+      background: #f6f8fa;
     }
 
     .caption {
-      padding: 14px 16px 16px;
-      font-size: 0.96rem;
+      padding: 12px 14px 14px;
+      font-size: 0.92rem;
       color: var(--muted);
-      border-top: 1px solid #edf1f5;
+      border-top: 1px solid var(--soft-line);
+      min-height: 52px;
     }
 
-    .two-col-text {
-      display: grid;
-      grid-template-columns: 1.25fr 1fr;
-      gap: 44px;
-      align-items: start;
+    .subgroup {
+      margin-bottom: 24px;
+    }
+
+    .subgroup:last-child {
+      margin-bottom: 0;
+    }
+
+    .subgroup-title {
+      margin: 0 0 12px;
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+    }
+
+    .list-block {
+      background: transparent;
     }
 
     .list-block ul,
     .tools ul {
       margin: 0;
-      padding-left: 22px;
+      padding-left: 20px;
     }
 
     .list-block li,
     .tools li {
-      margin-bottom: 10px;
+      margin-bottom: 9px;
       font-size: 1rem;
     }
 
+    .additional-grid {
+      margin-top: 22px;
+    }
+
     .footer {
-      padding: 34px 0 60px;
+      padding: 28px 0 46px;
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
     }
 
     .note {
-      margin-top: 16px;
-      font-size: 0.92rem;
+      margin-top: 14px;
+      font-size: 0.9rem;
       color: var(--muted);
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 980px) {
       .grid-4 {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .two-col-text {
-        grid-template-columns: 1fr;
-        gap: 28px;
+      .grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .hero-top {
@@ -207,17 +252,118 @@
     }
 
     @media (max-width: 640px) {
-      .grid-2,
-      .grid-4 {
-        grid-template-columns: 1fr;
-      }
-
       .container {
         width: min(100% - 24px, var(--max));
       }
 
+      .grid-2,
+      .grid-3,
+      .grid-4 {
+        grid-template-columns: 1fr;
+      }
+
       .hero {
-        padding-top: 34px;
+        padding-top: 28px;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 14mm;
+    }
+
+    @media print {
+      :root {
+        --bg: #ffffff;
+        --surface: #ffffff;
+        --text: #000000;
+        --muted: #444444;
+        --line: #8a8a8a;
+        --soft-line: #d7d7d7;
+      }
+
+      html,
+      body {
+        background: #ffffff !important;
+      }
+
+      body {
+        font-size: 11pt;
+        line-height: 1.35;
+      }
+
+      .container {
+        width: 100%;
+        max-width: none;
+      }
+
+      .hero {
+        padding: 0 0 8mm;
+      }
+
+      section {
+        padding: 0 0 7mm;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .hero-top {
+        padding-bottom: 4mm;
+        margin-bottom: 4mm;
+      }
+
+      .hero h1 {
+        font-size: 22pt;
+      }
+
+      .section-title {
+        font-size: 16pt;
+      }
+
+      .section-rule {
+        margin-bottom: 4mm;
+      }
+
+      .section-meta {
+        margin-bottom: 4mm;
+        font-size: 10pt;
+      }
+
+      .link-row {
+        margin-bottom: 4mm;
+        font-size: 9.5pt;
+      }
+
+      .card {
+        box-shadow: none !important;
+        border: 1px solid #d5d5d5;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .caption {
+        font-size: 9pt;
+        min-height: auto;
+      }
+
+      .grid-2,
+      .grid-3,
+      .grid-4 {
+        gap: 4mm;
+      }
+
+      .additional-grid {
+        margin-top: 5mm;
+      }
+
+      .footer {
+        padding: 3mm 0 0;
+        font-size: 9pt;
+      }
+
+      a {
+        color: #000000;
+        text-decoration: none;
       }
     }
   </style>
@@ -229,10 +375,6 @@
         <h1>Selected Work Samples – Social Media &amp; Content Communication</h1>
         <div class="name">Szilvia Illés</div>
       </div>
-      <p class="intro">
-        Selected examples of social media, video and editorial content developed for a professional organization,
-        with a focus on structured communication, visual consistency and publication-ready materials.
-      </p>
     </div>
   </header>
 
@@ -247,40 +389,48 @@
         </p>
 
         <div class="link-row">
-          <div><strong>Facebook:</strong> <a href="https://www.facebook.com/FBAMSZ" target="_blank">facebook.com/FBAMSZ</a></div>
-          <div><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/fbamsz/" target="_blank">linkedin.com/company/fbamsz</a></div>
+          <div><strong>Facebook:</strong> <a href="https://www.facebook.com/FBAMSZ" target="_blank" rel="noopener noreferrer">facebook.com/FBAMSZ</a></div>
+          <div><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/fbamsz/" target="_blank" rel="noopener noreferrer">linkedin.com/company/fbamsz</a></div>
         </div>
 
-        <div class="grid-2">
-          <article class="card wide">
-            <img src="images/facebook-page.png" alt="FBAMSZ Facebook page" />
-            <div class="caption">FBAMSZ Facebook Page</div>
-          </article>
+        <div class="subgroup">
+          <h3 class="subgroup-title">Facebook</h3>
+          <div class="grid-2">
+            <article class="card standard">
+              <img src="images/facebook-page.png" alt="FBAMSZ Facebook page" />
+              <div class="caption">FBAMSZ Facebook Page</div>
+            </article>
 
-          <article class="card wide">
-            <img src="images/facebook-post-grid.png" alt="FBAMSZ Facebook post collection" />
-            <div class="caption">Selected Facebook post series</div>
-          </article>
+            <article class="card standard">
+              <img src="images/facebook-post-grid.png" alt="Selected Facebook posts" />
+              <div class="caption">Selected Facebook post series</div>
+            </article>
 
-          <article class="card wide">
-            <img src="images/facebook-post-bipar.png" alt="FBAMSZ event-related Facebook visual" />
-            <div class="caption">Event-related Facebook visual</div>
-          </article>
+            <article class="card standard">
+              <img src="images/facebook-post-bipar.png" alt="Event-related Facebook visual" />
+              <div class="caption">Event-related Facebook visual</div>
+            </article>
 
-          <article class="card wide">
-            <img src="images/facebook-post-bipar-text.png" alt="FBAMSZ event-related Facebook caption" />
-            <div class="caption">Event-related Facebook copy</div>
-          </article>
+            <article class="card copy">
+              <img src="images/facebook-post-bipar-text.png" alt="Event-related Facebook copy" />
+              <div class="caption">Event-related Facebook copy</div>
+            </article>
+          </div>
+        </div>
 
-          <article class="card wide">
-            <img src="images/linkedin-post.png" alt="FBAMSZ LinkedIn visual" />
-            <div class="caption">LinkedIn post visual</div>
-          </article>
+        <div class="subgroup">
+          <h3 class="subgroup-title">LinkedIn</h3>
+          <div class="grid-2">
+            <article class="card standard">
+              <img src="images/linkedin-post.png" alt="LinkedIn post visual" />
+              <div class="caption">LinkedIn post visual</div>
+            </article>
 
-          <article class="card wide">
-            <img src="images/linkedin-post-text.png" alt="FBAMSZ LinkedIn caption" />
-            <div class="caption">LinkedIn post copy</div>
-          </article>
+            <article class="card copy">
+              <img src="images/linkedin-post-text.png" alt="LinkedIn post copy" />
+              <div class="caption">LinkedIn post copy</div>
+            </article>
+          </div>
         </div>
       </div>
     </section>
@@ -295,13 +445,13 @@
         </p>
 
         <div class="grid-2">
-          <article class="card wide">
-            <img src="images/video-post-1.png" alt="Video content example with social media caption" />
+          <article class="card standard">
+            <img src="images/video-post-1.png" alt="Video-based social media content" />
             <div class="caption">Video-based social media content</div>
           </article>
 
-          <article class="card wide">
-            <img src="images/video-post-2.png" alt="Video content example from a professional event" />
+          <article class="card standard">
+            <img src="images/video-post-2.png" alt="Event-related video communication" />
             <div class="caption">Event-related video communication</div>
           </article>
         </div>
@@ -342,22 +492,22 @@
         <h2 class="section-title">Additional Work</h2>
         <div class="section-rule"></div>
 
-        <div class="two-col-text">
-          <div class="list-block">
-            <ul>
-              <li>Full creative concept for a 3-day professional conference and miscellaneous workshops</li>
-              <li>General assembly communication materials</li>
-              <li>Social media content series</li>
-              <li>Image and video content</li>
-              <li>Infographics and educational materials</li>
-              <li>Internal training content</li>
-              <li>Content-oriented photography for social media and visual materials</li>
-              <li>Website content management and page building with WordPress &amp; Elementor</li>
-            </ul>
-          </div>
+        <div class="list-block">
+          <ul>
+            <li>Full creative concept for a 3-day professional conference and miscellaneous workshops</li>
+            <li>General assembly communication materials</li>
+            <li>Social media content series</li>
+            <li>Image and video content</li>
+            <li>Infographics and educational materials</li>
+            <li>Internal training content</li>
+            <li>Content-oriented photography for social media and visual materials</li>
+            <li>Website content management and page building with WordPress &amp; Elementor</li>
+          </ul>
+        </div>
 
-          <article class="card wide">
-            <img src="images/post-grid.png" alt="Collection of selected social media visuals" />
+        <div class="additional-grid">
+          <article class="card gridshot">
+            <img src="images/post-grid.png" alt="Selected visual post series" />
             <div class="caption">Selected visual post series</div>
           </article>
         </div>
@@ -382,7 +532,7 @@
         </div>
 
         <p class="note">
-          This page presents selected examples of previous work in content communication and social media.
+          Selected previous work examples presented in web format.
         </p>
       </div>
     </section>
